@@ -32,7 +32,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Sep 29 14:39 wav
 ## 仮想環境の作成
 
 ```bash
-python -m venv speaker
+uv venv speaker
 ```
 
 ## 仮想環境の有効化
@@ -44,8 +44,8 @@ source speaker/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r requirements.txt
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
 ```
 
 ## 実行

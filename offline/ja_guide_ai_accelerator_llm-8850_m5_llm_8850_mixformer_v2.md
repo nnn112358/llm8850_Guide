@@ -34,7 +34,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 11 18:28 onnx
 まず、Python 仮想環境を作成します。
 
 ```bash
-python -m venv mixformer
+uv venv mixformer
 ```
 
 仮想環境のアクティベート:
@@ -46,8 +46,8 @@ source mixformer/bin/activate
 次に、必要な依存パッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install argparse numpy opencv-python glob2
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install argparse numpy opencv-python glob2
 ```
 
 ## 実行

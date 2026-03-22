@@ -34,7 +34,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 12 10:56 deepseek-r1_tokenizer
 推論に必要な Python 仮想環境を作成します。
 
 ```bash
-python -m venv deepseek
+uv venv deepseek
 ```
 
 ### 仮想環境のアクティベート
@@ -46,7 +46,7 @@ source deepseek/bin/activate
 ### 依存パッケージのインストール
 
 ```bash
-pip install transformers jinja2
+uv pip install transformers jinja2
 ```
 
 ## tokenizer パーサーの起動

@@ -229,16 +229,18 @@ cd ~/rsp/CosyVoice2-scripts
 git submodule update --init --recursive
 ```
 
-### 6.4 pipがグローバル設定の罠にはまる：hash mismatch（piwheels）
+### 6.4 パッケージインストール時のトラブル（ミラー指定・キャッシュ無効化）
 
-システム/ユーザーのpip設定に`piwheels`が混在していると、最近の実機テストでは`transformers`、`modelscope`のインストール時にhash mismatchが発生する場合があります。
+`uv` は `pip` の設定ファイル（`~/.config/pip/pip.conf` 等）を読まないため、`piwheels` 混在による hash mismatch 問題は発生しません。
 
-最も安定した回避策：このインストールに対してグローバルpip設定を一時的に無効化し、ミラーソースを指定：
+ネットワークが不安定な場合やキャッシュが原因でエラーが出る場合は、ミラーとキャッシュ無効化を明示的に指定してください：
 
 ```bash
 cd ~/rsp/CosyVoice2-scripts
-PIP_CONFIG_FILE=/dev/null pip install --no-cache-dir --index-url https://mirrors.cloud.tencent.com/pypi/simple -r requirements.txt
+uv pip install --no-cache --index-url https://mirrors.cloud.tencent.com/pypi/simple -r requirements.txt
 ```
+
+> **補足:** `uv pip` では `--no-cache-dir` ではなく `--no-cache` を使用します。
 
 ### 6.5 voiceの生成とCosyVoice2-0.5B-axclへの組み込み
 
@@ -275,14 +277,14 @@ curl -X POST http://127.0.0.1:8000/v1/audio/speech \
 - `/opt/m5stack/data/CosyVoice2-0.5B-axcl`：約**1.4G**（推論に必要、削除非推奨）
 - `~/rsp/whisper.axcl`：約**747M**（ソースコード/成果物/モデルを含む。ソースコードキャッシュは必要に応じてクリーンアップ可能だが、`install/`内の実行に必要なファイルは変更しないことを推奨）
 - `~/rsp/CosyVoice2-scripts`：約**2.1G**（主に「クローンツールチェーン + ONNX + Python依存関係」で、**クローン完了後は削除可能**）
-- `~/.cache/pip`：約**191M**（削除可能）
+- `~/.cache/uv`：約**191M**（削除可能、`uv cache clean` でも可）
 - `journalctl`：約**99M**（制御可能）
 
 よく使うクリーンアップコマンド：
 
 ```bash
-# 1) pipキャッシュ
-rm -rf ~/.cache/pip
+# 1) uvキャッシュ
+uv cache clean
 
 # 2) systemd journal
 sudo journalctl --vacuum-size=100M
@@ -303,4 +305,4 @@ rm -rf ~/rsp/CosyVoice2-scripts
 4) `curl http://127.0.0.1:8000/v1/models`に`CosyVoice2-0.5B-axcl`がある
 5) TTSリクエストには`voice`が必須；500エラーの場合はまず3サービスを再起動してからログを確認
 6) 大容量ファイルのダウンロードは`hf-mirror.com/resolve/main/...`の直リンク優先、`git lfs`の不安定性を回避
-7) 容量不足の場合は`~/rsp/CosyVoice2-scripts`、`~/.cache/pip`の削除、`journalctl`の圧縮を優先
+7) 容量不足の場合は`~/rsp/CosyVoice2-scripts`の削除、`uv cache clean`、`journalctl`の圧縮を優先

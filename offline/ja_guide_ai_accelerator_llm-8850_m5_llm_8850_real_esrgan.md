@@ -34,7 +34,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 13 09:12 onnx
 まず、Python 仮想環境を作成します。
 
 ```bash
-python -m venv esrgan
+uv venv esrgan
 ```
 
 仮想環境のアクティベート:
@@ -46,8 +46,8 @@ source esrgan/bin/activate
 次に、必要な依存パッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install argparse numpy opencv-python
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install argparse numpy opencv-python
 ```
 
 ## 実行

@@ -84,7 +84,7 @@ drwxrwxr-x 3 m5stack m5stack 4.0K Nov  6 15:18 scripts
 ### 仮想環境の作成
 
 ```bash
-python -m venv cosyvoice
+uv venv cosyvoice
 ```
 
 ### 仮想環境の有効化
@@ -96,7 +96,7 @@ source cosyvoice/bin/activate
 ### 依存パッケージのインストール
 
 ```bash
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 ```
 
 ### process_prompt スクリプトの実行

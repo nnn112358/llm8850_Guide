@@ -37,7 +37,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 12 09:13 vit_model
 推論に必要な Python 仮想環境を作成します。
 
 ```bash
-python -m venv smolvlm
+uv venv smolvlm
 ```
 
 ## 仮想環境のアクティベート
@@ -51,8 +51,8 @@ source smolvlm/bin/activate
 このモデルでは、AXERA の推論エンジンおよびその他の依存パッケージが必要です。以下のコマンドでインストールしてください。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install transformers torch torchvision tqdm pillow num2words onnx onnxruntime
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install transformers torch torchvision tqdm pillow num2words onnx onnxruntime
 ```
 
 ## 実行

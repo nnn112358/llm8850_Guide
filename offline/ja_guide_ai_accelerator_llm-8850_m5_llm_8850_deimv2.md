@@ -32,7 +32,7 @@ total 19M
 まず、Python 仮想環境を作成します。
 
 ```bash
-python -m venv deim
+uv venv deim
 ```
 
 仮想環境のアクティベート:
@@ -44,8 +44,8 @@ source deim/bin/activate
 次に、必要な依存パッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install opencv-python torch torchvision
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install opencv-python torch torchvision
 ```
 
 ## 実行

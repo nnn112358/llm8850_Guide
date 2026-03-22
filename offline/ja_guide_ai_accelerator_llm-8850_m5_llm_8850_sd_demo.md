@@ -40,7 +40,7 @@ drwxrwxr-x 4 m5stack m5stack 4.0K Sep 26 11:08 models
 まず、Python の仮想環境を作成します。
 
 ```bash
-python -m venv sd
+uv venv sd
 ```
 
 ## 仮想環境の有効化
@@ -57,8 +57,8 @@ source sd/bin/activate
 
 ```bash
 sudo apt install cmake -y
-pip install -r requirements.txt
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
 ```
 
 ## バックエンドの起動

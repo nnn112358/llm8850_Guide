@@ -46,7 +46,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Sep 27 15:33 token2wav-axmodels
 ## 仮想環境の作成
 
 ```bash
-python -m venv cosyvoice
+uv venv cosyvoice
 ```
 
 ## 仮想環境の有効化
@@ -58,7 +58,7 @@ source cosyvoice/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install -r scripts/requirements.txt
+uv pip install -r scripts/requirements.txt
 ```
 
 ## tokenizer サービスの起動

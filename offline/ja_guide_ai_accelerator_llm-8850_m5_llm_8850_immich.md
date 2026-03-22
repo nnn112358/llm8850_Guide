@@ -72,7 +72,7 @@ WARN[0000] /home/m5stack/rsp/immich/docker-compose.override.yml: the attribute `
 機械学習サービス用の Python 仮想環境を作成します。
 
 ```bash
-python -m venv mich
+uv venv mich
 ```
 
 ## 仮想環境の有効化
@@ -88,9 +88,9 @@ source mich/bin/activate
 必要なパッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r requirements.txt
-pip install immich_ml-1.129.0-py3-none-any.whl # プリコンパイルパッケージはアップグレードされる可能性があります。実際のファイル名を使用してください。
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
+uv pip install immich_ml-1.129.0-py3-none-any.whl # プリコンパイルパッケージはアップグレードされる可能性があります。実際のファイル名を使用してください。
 ```
 
 ## immich_ml サービスの起動

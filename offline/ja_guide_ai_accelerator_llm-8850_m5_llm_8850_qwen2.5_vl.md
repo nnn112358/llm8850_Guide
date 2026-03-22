@@ -51,7 +51,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 12 16:37 video
 推論に必要な Python 仮想環境を作成します。
 
 ```bash
-python -m venv qwen
+uv venv qwen
 ```
 
 ### 仮想環境のアクティベート
@@ -63,7 +63,7 @@ source qwen/bin/activate
 ### 依存パッケージのインストール
 
 ```bash
-pip install transformers jinja2
+uv pip install transformers jinja2
 ```
 
 ## 画像推論

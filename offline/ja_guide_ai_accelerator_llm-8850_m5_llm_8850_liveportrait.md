@@ -32,7 +32,7 @@ drwxrwxr-x 5 m5stack m5stack 4.0K Aug 13 09:41 python
 まず、Python の仮想環境を作成します。
 
 ```bash
-python -m venv lvpr
+uv venv lvpr
 ```
 
 ## 仮想環境の有効化
@@ -48,9 +48,9 @@ source lvpr/bin/activate
 必要なパッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r python/requirements.txt
-pip install requests tqdm
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r python/requirements.txt
+uv pip install requests tqdm
 ```
 
 ## 静止画による駆動（Image）

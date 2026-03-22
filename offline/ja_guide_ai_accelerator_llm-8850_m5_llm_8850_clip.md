@@ -31,7 +31,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 11 09:08 pyclip
 ## 仮想環境の作成
 
 ```bash
-python -m venv clip
+uv venv clip
 ```
 
 ## 仮想環境の有効化
@@ -43,7 +43,7 @@ source clip/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install -r pyclip/requirements.txt
+uv pip install -r pyclip/requirements.txt
 ```
 
 ## 環境変数の設定

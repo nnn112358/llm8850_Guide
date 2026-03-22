@@ -31,7 +31,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Oct 20 12:24 jina-clip-v2
 ## 仮想環境の作成
 
 ```bash
-python -m venv clip
+uv venv clip
 ```
 
 ## 仮想環境の有効化
@@ -43,8 +43,8 @@ source clip/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install torch pillow transformers timm torchvision
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install torch pillow transformers timm torchvision
 ```
 
 ## 実行

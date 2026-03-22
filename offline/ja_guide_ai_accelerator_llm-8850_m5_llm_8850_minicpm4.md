@@ -40,7 +40,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 12 11:00 minicpm4_tokenizer
 推論に必要な Python 仮想環境を作成します。
 
 ```bash
-python -m venv minicpm
+uv venv minicpm
 ```
 
 ## 仮想環境のアクティベート
@@ -52,7 +52,7 @@ source minicpm/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install transformers jinja2
+uv pip install transformers jinja2
 ```
 
 ## tokenizer パーサーの起動

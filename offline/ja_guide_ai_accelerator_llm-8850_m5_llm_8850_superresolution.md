@@ -31,7 +31,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Sep  4 19:03 video
 まず、Python 仮想環境を作成します。
 
 ```bash
-python -m venv sr
+uv venv sr
 ```
 
 仮想環境のアクティベート:
@@ -43,8 +43,8 @@ source sr/bin/activate
 次に、必要な依存パッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install opencv-python torch torchvision tqdm scikit-image
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install opencv-python torch torchvision tqdm scikit-image
 ```
 
 ## 実行

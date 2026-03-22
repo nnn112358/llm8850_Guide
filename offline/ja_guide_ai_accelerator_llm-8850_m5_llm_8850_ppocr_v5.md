@@ -43,7 +43,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Oct 20 10:40 ax650
 まず、Python 仮想環境を作成します。
 
 ```bash
-python -m venv ppocr
+uv venv ppocr
 ```
 
 仮想環境のアクティベート:
@@ -55,8 +55,8 @@ source ppocr/bin/activate
 次に、必要な依存パッケージをインストールします。
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r requirements.txt
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
 ```
 
 ## 実行

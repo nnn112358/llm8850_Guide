@@ -40,7 +40,7 @@ drwxrwxr-x 2 m5stack m5stack 4.0K Aug 12 16:38 sensevoice_ax650
 ## 仮想環境の作成
 
 ```bash
-python -m venv sensevoice
+uv venv sensevoice
 ```
 
 ## 仮想環境の有効化
@@ -52,8 +52,8 @@ source sensevoice/bin/activate
 ## 依存パッケージのインストール
 
 ```bash
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r requirements.txt
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
 ```
 
 ## 実行

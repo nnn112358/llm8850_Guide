@@ -12,6 +12,7 @@
   - [AXCL FFmpeg（ハードウェアデコード/トランスコード）](#axcl-ffmpegハードウェアデコードトランスコード)
   - [Docker（任意）](#docker任意)
   - [Git LFS（任意）](#git-lfs任意)
+  - [uv（Python パッケージ管理）](#uvpython-パッケージ管理)
   - [systemctl（StackFlowサービス管理）](#systemctlstackflowサービス管理)
   - [プロキシ/ミラー（ネットワーク）](#プロキシミラーネットワーク)
   - [ディスクとログのクリーンアップ](#ディスクとログのクリーンアップ)
@@ -279,6 +280,37 @@ git lfs install
 
 参考原文：`offline/ja_guide_ai_accelerator_llm-8850_m5_llm_8850_git_lfs.md`
 
+### uv（Python パッケージ管理）
+
+本ドキュメントでは Python 仮想環境の作成とパッケージインストールに [uv](https://docs.astral.sh/uv/) を使用しています。`pip` より高速で、依存解決も堅牢です。
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+インストール後、シェルを再起動するか `source ~/.local/bin/env` を実行してパスを通してください。
+
+基本的な使い方：
+
+```bash
+# 仮想環境の作成
+uv venv myenv
+
+# アクティベート（従来の venv と同じ）
+source myenv/bin/activate
+
+# パッケージのインストール
+uv pip install transformers jinja2
+
+# requirements.txt からインストール
+uv pip install -r requirements.txt
+
+# .whl ファイルのインストール
+uv pip install https://example.com/package-1.0-py3-none-any.whl
+```
+
+> **ヒント:** `uv` は `pip` の設定ファイル（`~/.config/pip/pip.conf` 等）を読みません。そのため、`piwheels` 混在による hash mismatch 等の問題が発生しません。ミラーを指定する場合は `--index-url` オプションを直接指定してください。
+
 ### systemctl（StackFlowサービス管理）
 
 StackFlowの**OpenAI互換API / LLM / TTS / ASR**は、多くの場合systemdサービスとして実行されます（対応する`llm-*`パッケージのインストール後に自動でインストール/有効化）。一般的なサービス（ファームウェア/バージョンにより若干異なる場合あり）：
@@ -318,7 +350,7 @@ sudo journalctl -u llm-cosy-voice -n 200 --no-pager
 グローバルに`export http_proxy=...`を設定しないことを推奨します（オフにし忘れやすいため）。必要なときに`env`で一時的に設定してください：
 
 ```bash
-# 1) GitHub：プロキシ経由（git clone / pip / curl 等すべてこの書式で可能）
+# 1) GitHub：プロキシ経由（git clone / uv pip / curl 等すべてこの書式で可能）
 env http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 \
   git clone https://github.com/xxx/yyy.git
 
@@ -535,12 +567,12 @@ cd SenseVoice
 2) 仮想環境の作成と依存パッケージのインストール
 
 ```bash
-python -m venv sensevoice
+uv venv sensevoice
 source sensevoice/bin/activate
 
 # pyaxengine wheelはGitHub Releaseにあります：GitHubアクセスにプロキシが必要な場合は一時的にhttp_proxy/https_proxyを追加
-pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
-pip install -r requirements.txt
+uv pip install https://github.com/AXERA-TECH/pyaxengine/releases/download/0.1.3.rc2/axengine-0.1.3-py3-none-any.whl
+uv pip install -r requirements.txt
 ```
 
 3) 実行（初回はモデルが自動ダウンロードされる）
@@ -666,9 +698,9 @@ git submodule update --init --recursive
 # env http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 \
 #   git submodule update --init --recursive
 
-python -m venv cosyvoice
+uv venv cosyvoice
 source cosyvoice/bin/activate
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 
 python3 scripts/process_prompt.py --prompt_text asset/zh_woman1.txt --prompt_speech asset/zh_woman1.wav --output zh_woman1
 
@@ -803,7 +835,7 @@ axcl-smi
 
 ## オフラインドキュメント索引（トピック別）
 
-> 以下のファイルはすべて`offline/`にあります。原文と照合する場合は、対応するファイルを直接開いてキーワード（モデル名、`wget`、`git clone`、`python -m venv`、`systemctl`等）で検索してください。
+> 以下のファイルはすべて`offline/`にあります。原文と照合する場合は、対応するファイルを直接開いてキーワード（モデル名、`wget`、`git clone`、`uv venv`、`systemctl`等）で検索してください。
 
 ### クイックスタート / インストール
 
